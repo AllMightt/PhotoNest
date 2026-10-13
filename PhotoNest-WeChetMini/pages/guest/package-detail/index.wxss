@@ -1,0 +1,11 @@
+.package-price {
+  margin-top: 22rpx;
+  color: #9b7a19;
+  font-size: 32rpx;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.detail-booking {
+  margin: 48rpx 0 28rpx;
+}

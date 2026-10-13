@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ruoyi-common-datascope" />
+        <module name="ruoyi-modules-photo" />
+        <module name="ruoyi-modules-job" />
+        <module name="ruoyi-modules-system" />
+        <module name="ruoyi-common-redis" />
+        <module name="ruoyi-api-system" />
+        <module name="ruoyi-common-swagger" />
+        <module name="ruoyi-common-core" />
+        <module name="ruoyi-common-security" />
+        <module name="ruoyi-common-sensitive" />
+        <module name="ruoyi-common-datasource" />
+        <module name="ruoyi-gateway" />
+        <module name="ruoyi-modules-gen" />
+        <module name="ruoyi-visual-monitor" />
+        <module name="ruoyi-common-seata" />
+        <module name="ruoyi-auth" />
+        <module name="ruoyi-common-log" />
+        <module name="ruoyi-modules-file" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ruoyi" options="-parameters" />
+      <module name="ruoyi-api" options="-parameters" />
+      <module name="ruoyi-api-system" options="-parameters" />
+      <module name="ruoyi-auth" options="-parameters" />
+      <module name="ruoyi-common" options="-parameters" />
+      <module name="ruoyi-common-core" options="-parameters" />
+      <module name="ruoyi-common-datascope" options="-parameters" />
+      <module name="ruoyi-common-datasource" options="-parameters" />
+      <module name="ruoyi-common-log" options="-parameters" />
+      <module name="ruoyi-common-redis" options="-parameters" />
+      <module name="ruoyi-common-seata" options="-parameters" />
+      <module name="ruoyi-common-security" options="-parameters" />
+      <module name="ruoyi-common-sensitive" options="-parameters" />
+      <module name="ruoyi-common-swagger" options="-parameters" />
+      <module name="ruoyi-gateway" options="-parameters" />
+      <module name="ruoyi-modules" options="-parameters" />
+      <module name="ruoyi-modules-file" options="-parameters" />
+      <module name="ruoyi-modules-gen" options="-parameters" />
+      <module name="ruoyi-modules-job" options="-parameters" />
+      <module name="ruoyi-modules-photo" options="-parameters" />
+      <module name="ruoyi-modules-system" options="-parameters" />
+      <module name="ruoyi-visual" options="-parameters" />
+      <module name="ruoyi-visual-monitor" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,12 @@
+<view class="page">
+  <view class="section">
+    <view class="title">预约管理</view>
+    <view class="muted">摄影师移动端轻量查看预约和咨询状态。</view>
+  </view>
+  <view wx:for="{{bookings}}" wx:key="id" class="section booking-card">
+    <view class="work-title">{{item.customerName}}</view>
+    <view class="muted">电话：{{item.maskedPhone}}</view>
+    <view class="muted">微信：{{item.wechatId}}</view>
+    <view class="muted">状态：{{item.status || '待跟进'}}</view>
+  </view>
+</view>

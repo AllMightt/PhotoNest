@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "套系详情",
+  "usingComponents": {
+    "floating-booking": "/components/floating-booking/index"
+  }
+}

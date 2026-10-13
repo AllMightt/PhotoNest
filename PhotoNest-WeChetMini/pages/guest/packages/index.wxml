@@ -1,0 +1,14 @@
+<view class="page">
+  <view class="eyebrow">PACKAGES</view>
+  <view class="title">拍摄套系</view>
+  <view wx:for="{{packages}}" wx:key="id" class="section package-card" data-id="{{item.id}}" bindtap="goDetail">
+    <image wx:if="{{item.coverUrl}}" class="package-cover" src="{{item.coverUrl}}" mode="aspectFill" />
+    <view class="package-label">Photo Package</view>
+    <view class="package-title">{{item.packageName}}</view>
+    <view class="package-price">{{item.priceLabel}}</view>
+    <view class="primary-button package-booking" data-id="{{item.id}}" catchtap="goBooking">预约套系</view>
+  </view>
+  <view wx:if="{{packages.length === 0}}" class="section muted">暂无套系</view>
+  <contact-dock share-code="{{shareCode}}" />
+  <floating-booking />
+</view>

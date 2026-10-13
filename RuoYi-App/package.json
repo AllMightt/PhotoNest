@@ -1,0 +1,42 @@
+{
+  "name": "ruoyi-app-photonest",
+  "version": "1.2.0",
+  "private": true,
+  "scripts": {
+    "dev:h5": "cross-env NODE_OPTIONS=--require=./build/node-compat.js NODE_ENV=development UNI_PLATFORM=h5 UNI_INPUT_DIR=. UNI_CLI_CONTEXT=. vue-cli-service uni-serve --host 127.0.0.1 --port 9090",
+    "build:h5": "cross-env NODE_OPTIONS=--require=./build/node-compat.js NODE_ENV=production UNI_PLATFORM=h5 UNI_INPUT_DIR=. UNI_CLI_CONTEXT=. vue-cli-service uni-build",
+    "build:mp-weixin": "cross-env NODE_OPTIONS=--require=./build/node-compat.js NODE_ENV=production UNI_PLATFORM=mp-weixin UNI_INPUT_DIR=. UNI_CLI_CONTEXT=. vue-cli-service uni-build",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@dcloudio/uni-app": "2.0.2-4020920240930001",
+    "@dcloudio/uni-cli-i18n": "2.0.2-4020920240930001",
+    "@dcloudio/uni-cli-shared": "2.0.2-4020920240930001",
+    "@dcloudio/uni-h5": "2.0.2-4020920240930001",
+    "@dcloudio/uni-i18n": "2.0.2-4020920240930001",
+    "@dcloudio/uni-migration": "2.0.2-4020920240930001",
+    "@dcloudio/uni-mp-weixin": "2.0.2-4020920240930001",
+    "@dcloudio/uni-template-compiler": "2.0.2-4020920240930001",
+    "@dcloudio/uni-ui": "1.5.7",
+    "@dcloudio/webpack-uni-mp-loader": "2.0.2-4020920240930001",
+    "@dcloudio/webpack-uni-pages-loader": "2.0.2-4020920240930001",
+    "vue": "2.6.14",
+    "vuex": "3.6.2"
+  },
+  "devDependencies": {
+    "@dcloudio/vue-cli-plugin-uni": "2.0.2-4020920240930001",
+    "@vue/cli-plugin-babel": "4.5.19",
+    "@vue/cli-service": "4.5.19",
+    "copy-webpack-plugin": "6.4.1",
+    "cross-env": "7.0.3",
+    "file-loader": "6.2.0",
+    "html-webpack-plugin": "3.2.0",
+    "regenerator-runtime": "0.14.1",
+    "sass": "1.97.2",
+    "sass-loader": "10.5.2",
+    "vue-template-compiler": "2.6.14",
+    "vitest": "3.2.4",
+    "url-loader": "4.1.1",
+    "webpack": "4.47.0"
+  }
+}

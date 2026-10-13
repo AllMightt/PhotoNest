@@ -1,0 +1,26 @@
+{
+  "name": "PhotoNest",
+  "appid": "__UNI__PHOTONEST",
+  "description": "PhotoNest guest and photographer mini app",
+  "versionName": "0.1.0",
+  "versionCode": "100",
+  "transformPx": false,
+  "h5": {
+    "router": {
+      "base": "/"
+    },
+    "devServer": {
+      "port": 5175
+    }
+  },
+  "mp-weixin": {
+    "appid": "",
+    "setting": {
+      "urlCheck": false,
+      "es6": true,
+      "postcss": true,
+      "minified": true
+    },
+    "usingComponents": true
+  }
+}

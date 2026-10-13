@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "作品",
+  "usingComponents": {
+    "contact-dock": "/components/contact-dock/index",
+    "floating-booking": "/components/floating-booking/index"
+  }
+}

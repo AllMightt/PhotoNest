@@ -1,0 +1,37 @@
+<view class="page">
+  <view class="portfolio-head">
+    <view class="eyebrow">PORTFOLIO</view>
+    <view class="title">作品集</view>
+  </view>
+  <scroll-view scroll-x class="category-scroll" show-scrollbar="{{false}}">
+    <view class="category-row">
+      <view
+        wx:for="{{displayCategories}}"
+        wx:key="id"
+        class="category-tab {{item.id === activeCategoryId ? 'active' : ''}}"
+        data-id="{{item.id}}"
+        bindtap="selectCategory"
+      >
+        {{item.categoryName}}
+      </view>
+    </view>
+  </scroll-view>
+  <view wx:if="{{hasMoreCategories}}" class="category-more" bindtap="showMoreCategories">MORE</view>
+  <view wx:if="{{activeCategoryName}}" class="category-label">COLLECTION · {{activeCategoryName}}</view>
+
+  <view wx:if="{{categories.length === 0}}" class="section muted">暂无作品分类</view>
+  <view class="grid">
+    <view wx:for="{{works}}" wx:key="id" class="work-card" data-id="{{item.id}}" bindtap="goWork">
+      <image class="work-cover" src="{{item.coverUrl}}" mode="aspectFill" />
+      <view class="work-label">{{item.shootType || activeCategoryName || 'Photo Story'}}</view>
+      <view class="work-title">{{item.title}}</view>
+      <view class="work-subtitle">#作品欣赏</view>
+    </view>
+    <view wx:if="{{works.length % 2 === 1}}" class="placeholder-card" />
+  </view>
+  <view wx:if="{{hasMoreWorks}}" class="works-more" bindtap="showMoreWorks">MORE</view>
+  <view wx:if="{{categories.length > 0 && works.length === 0}}" class="section muted">当前分类暂无作品</view>
+
+  <contact-dock share-code="{{shareCode}}" />
+  <floating-booking />
+</view>

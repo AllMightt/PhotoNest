@@ -1,0 +1,63 @@
+<view class="work-detail-page">
+  <view class="cover-stage">
+    <image wx:if="{{coverUrl}}" class="cover-image" src="{{coverUrl}}" mode="aspectFill" bindtap="previewCover" />
+    <view wx:else class="cover-fallback" />
+    <view class="cover-shade" />
+    <view class="cover-copy">
+      <view class="cover-eyebrow">Photo Story</view>
+      <view class="cover-title">{{work.title || '作品详情'}}</view>
+      <view class="cover-meta">
+        <text wx:if="{{work.shootLocation}}">{{work.shootLocation}}</text>
+        <text wx:if="{{work.shootLocation && work.shootTime}}"> · </text>
+        <text wx:if="{{work.shootTime}}">{{work.shootTime}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="story-card">
+    <view class="story-label">拍摄记录</view>
+    <view class="story-text">{{work.description || '这组照片记录了一次值得珍藏的拍摄。'}}</view>
+    <view class="story-stats">
+      <view>
+        <view class="stat-num">{{imageCount}}</view>
+        <view class="stat-label">张照片</view>
+      </view>
+      <view wx:if="{{work.shootType}}">
+        <view class="stat-num">{{work.shootType}}</view>
+        <view class="stat-label">拍摄类型</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="gallery-head">
+    <view>
+      <view class="gallery-eyebrow">Gallery</view>
+      <view class="gallery-title">完整组图</view>
+    </view>
+    <view class="gallery-count">{{imageCount}} photos</view>
+  </view>
+
+  <view class="image-flow">
+    <image
+      wx:for="{{images}}"
+      wx:key="id"
+      class="detail-image"
+      src="{{item.displayUrl || item.originalUrl || item.thumbnailUrl}}"
+      mode="widthFix"
+      data-index="{{index}}"
+      bindtap="previewImage"
+    />
+  </view>
+
+  <view wx:if="{{images.length === 0}}" class="empty-gallery">摄影师正在整理这组照片</view>
+
+  <view class="bottom-consult">
+    <view class="consult-copy">
+      <view class="consult-title">喜欢这组风格？</view>
+      <view class="consult-note">可以发送预约咨询，摄影师会与你确认档期。</view>
+    </view>
+    <view class="consult-button" bindtap="goBooking">预约</view>
+  </view>
+
+  <floating-booking />
+</view>

@@ -1,0 +1,8 @@
+.booking-submit,
+.success-confirm {
+  margin-top: 44rpx;
+}
+
+.success-panel {
+  border-top: 0;
+}

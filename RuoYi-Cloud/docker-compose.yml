@@ -1,0 +1,97 @@
+services:
+  ruoyi-mysql:
+    image: mysql:8.0
+    container_name: ruoyi-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: ry-cloud
+      TZ: Asia/Shanghai
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_general_ci
+      - --default-time-zone=+08:00
+      - --lower-case-table-names=1
+    ports:
+      - "3306:3306"
+    volumes:
+      - ruoyi_mysql_data:/var/lib/mysql
+      - ./sql/ry_20260417.sql:/docker-entrypoint-initdb.d/01-ry-cloud.sql:ro
+      - ./sql/quartz.sql:/docker-entrypoint-initdb.d/02-quartz.sql:ro
+      - ./sql/photonest_mvp.sql:/docker-entrypoint-initdb.d/03-photonest-mvp.sql:ro
+      - ./sql/ry_config_20260311.sql:/docker-entrypoint-initdb.d/10-ry-config.sql:ro
+      - ./sql/photonest_nacos_config.sql:/docker-entrypoint-initdb.d/11-photonest-nacos-config.sql:ro
+      - ./sql/ry_seata_20210128.sql:/docker-entrypoint-initdb.d/20-ry-seata.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -ppassword --silent"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+  ruoyi-redis:
+    image: redis:7-alpine
+    container_name: ruoyi-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - ruoyi_redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+  ruoyi-minio:
+    image: minio/minio:RELEASE.2025-04-22T22-12-26Z
+    container_name: ruoyi-minio
+    restart: unless-stopped
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+      TZ: Asia/Shanghai
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ruoyi_minio_data:/data
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+
+  ruoyi-nacos:
+    image: nacos/nacos-server:v3.0.2
+    container_name: ruoyi-nacos
+    restart: unless-stopped
+    environment:
+      MODE: standalone
+      TZ: Asia/Shanghai
+      NACOS_AUTH_TOKEN: your_auth_token
+      NACOS_AUTH_IDENTITY_KEY: your_identity_key
+      NACOS_AUTH_IDENTITY_VALUE: your_identity_value
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+      - "9849:9849"
+      - "18080:8080"
+    volumes:
+      - ./docker/nacos/conf/application.properties:/home/nacos/conf/application.properties:ro
+      - ruoyi_nacos_logs:/home/nacos/logs
+    depends_on:
+      ruoyi-mysql:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:8848/nacos/actuator/health | grep -q UP"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+
+volumes:
+  ruoyi_mysql_data:
+  ruoyi_redis_data:
+  ruoyi_nacos_logs:
+  ruoyi_minio_data:

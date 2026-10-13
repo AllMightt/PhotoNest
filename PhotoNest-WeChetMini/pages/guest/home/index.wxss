@@ -1,0 +1,244 @@
+.home-page {
+  padding: 0 30rpx calc(156rpx + env(safe-area-inset-bottom));
+  background: #f9f9f9;
+}
+
+.home-hero {
+  position: relative;
+  min-height: 880rpx;
+  margin-left: -30rpx;
+  margin-right: -30rpx;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.home-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.home-hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.18) 44%, rgba(0, 0, 0, 0.76));
+}
+
+.home-hero-content {
+  position: relative;
+  z-index: 1;
+  min-height: 880rpx;
+  padding: 132rpx 42rpx 70rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #fff;
+}
+
+.brand-logo {
+  width: 116rpx;
+  height: 116rpx;
+  margin-bottom: 38rpx;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.brand-kicker {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 20rpx;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+}
+
+.brand-name {
+  margin-top: 18rpx;
+  max-width: 640rpx;
+  font-family: "Songti SC", "STSong", "Times New Roman", serif;
+  font-size: 72rpx;
+  font-weight: 600;
+  line-height: 1.04;
+}
+
+.brand-subtitle {
+  margin-top: 26rpx;
+  max-width: 560rpx;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 28rpx;
+  line-height: 1.78;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 52rpx;
+}
+
+.hero-primary,
+.hero-ghost {
+  height: 86rpx;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  font-size: 23rpx;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.hero-primary {
+  background: #fff;
+  color: #1a1a1a;
+}
+
+.hero-ghost {
+  color: #fff;
+  border: 1rpx solid rgba(255, 255, 255, 0.48);
+}
+
+.home-intro {
+  margin: 74rpx 0 0;
+  padding: 0;
+  background: transparent;
+  text-align: left;
+}
+
+.intro-eyebrow,
+.block-eyebrow {
+  color: #9b7a19;
+  font-size: 20rpx;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+}
+
+.intro-title,
+.block-title {
+  margin-top: 14rpx;
+  color: #1a1a1a;
+  font-family: "Songti SC", "STSong", "Times New Roman", serif;
+  font-size: 52rpx;
+  font-weight: 600;
+  line-height: 1.12;
+}
+
+.intro-title {
+  text-align: center;
+}
+
+.intro-eyebrow {
+  text-align: center;
+}
+
+.intro-copy {
+  margin: 26rpx auto 0;
+  max-width: 620rpx;
+  color: #5d5f5f;
+  font-size: 28rpx;
+  line-height: 1.9;
+  text-align: center;
+}
+
+.home-block {
+  margin: 78rpx 0 0;
+  padding-top: 48rpx;
+  border-top: 1rpx solid rgba(26, 26, 26, 0.14);
+}
+
+.block-head {
+  margin-bottom: 36rpx;
+}
+
+.works-head,
+.works-title-wrap {
+  text-align: center;
+}
+
+.home-work-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 46rpx 24rpx;
+}
+
+.home-work-card {
+  width: calc((100% - 24rpx) / 2);
+  min-width: 0;
+}
+
+.home-work-card.featured {
+  width: 100%;
+}
+
+.home-work-cover {
+  width: 100%;
+  height: 372rpx;
+  display: block;
+  background: #e9e7e1;
+}
+
+.home-work-card.featured .home-work-cover {
+  height: 680rpx;
+}
+
+.home-work-meta {
+  padding: 18rpx 0 0;
+}
+
+.home-work-label {
+  color: #9b7a19;
+  font-size: 19rpx;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.home-work-title {
+  margin-top: 8rpx;
+  color: #1a1a1a;
+  font-family: "Songti SC", "STSong", "Times New Roman", serif;
+  font-size: 34rpx;
+  font-weight: 600;
+  line-height: 1.28;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.home-work-tag {
+  margin-top: 8rpx;
+  color: #777;
+  font-size: 23rpx;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.home-work-placeholder {
+  width: calc((100% - 24rpx) / 2);
+  min-height: 1rpx;
+  background: transparent;
+}
+
+.home-more-button {
+  width: 420rpx;
+  height: 82rpx;
+  margin: 54rpx auto 0;
+  border: 1rpx solid rgba(26, 26, 26, 0.36);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a1a1a;
+  font-size: 24rpx;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+}
+
+.home-empty {
+  padding: 84rpx 0;
+  color: #777;
+  font-size: 26rpx;
+  text-align: center;
+}

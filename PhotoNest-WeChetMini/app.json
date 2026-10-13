@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/guest/home/index",
+    "pages/guest/works/index",
+    "pages/guest/work-detail/index",
+    "pages/guest/packages/index",
+    "pages/guest/package-detail/index",
+    "pages/guest/about/index",
+    "pages/guest/booking/index",
+    "pages/guest/profile/index",
+    "pages/photographer/bookings/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "PhotoNest",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#f9f9f9"
+  },
+  "tabBar": {
+    "color": "#767676",
+    "selectedColor": "#1a1a1a",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/guest/home/index",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/guest/works/index",
+        "text": "作品"
+      },
+      {
+        "pagePath": "pages/guest/packages/index",
+        "text": "套系"
+      },
+      {
+        "pagePath": "pages/guest/about/index",
+        "text": "关于"
+      },
+      {
+        "pagePath": "pages/guest/profile/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

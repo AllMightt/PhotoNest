@@ -1,0 +1,12 @@
+<movable-area class="floating-area">
+  <movable-view
+    class="floating-booking"
+    direction="all"
+    x="{{x}}"
+    y="{{y}}"
+    bindchange="savePosition"
+    bindtap="openBooking"
+  >
+    预约
+  </movable-view>
+</movable-area>

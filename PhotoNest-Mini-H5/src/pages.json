@@ -1,0 +1,92 @@
+{
+  "pages": [
+    {
+      "path": "pages/guest/home/index",
+      "style": {
+        "navigationBarTitleText": "主页"
+      }
+    },
+    {
+      "path": "pages/guest/works/index",
+      "style": {
+        "navigationBarTitleText": "作品"
+      }
+    },
+    {
+      "path": "pages/guest/work-detail/index",
+      "style": {
+        "navigationBarTitleText": "作品详情"
+      }
+    },
+    {
+      "path": "pages/guest/packages/index",
+      "style": {
+        "navigationBarTitleText": "套系"
+      }
+    },
+    {
+      "path": "pages/guest/package-detail/index",
+      "style": {
+        "navigationBarTitleText": "套系详情"
+      }
+    },
+    {
+      "path": "pages/guest/about/index",
+      "style": {
+        "navigationBarTitleText": "关于"
+      }
+    },
+    {
+      "path": "pages/guest/booking/index",
+      "style": {
+        "navigationBarTitleText": "预约"
+      }
+    },
+    {
+      "path": "pages/guest/profile/index",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "pages/photographer/bookings/index",
+      "style": {
+        "navigationBarTitleText": "预约管理"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "PhotoNest",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#ffffff"
+  },
+  "tabBar": {
+    "color": "#767676",
+    "selectedColor": "#ff5f67",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/guest/home/index",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/guest/works/index",
+        "text": "作品"
+      },
+      {
+        "pagePath": "pages/guest/packages/index",
+        "text": "套系"
+      },
+      {
+        "pagePath": "pages/guest/about/index",
+        "text": "关于"
+      },
+      {
+        "pagePath": "pages/guest/profile/index",
+        "text": "我的"
+      }
+    ]
+  }
+}

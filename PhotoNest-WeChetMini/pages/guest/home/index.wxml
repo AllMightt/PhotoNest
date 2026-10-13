@@ -1,0 +1,47 @@
+<view class="page home-page">
+  <view class="home-hero {{coverImage ? 'has-cover' : ''}}">
+    <image wx:if="{{coverImage}}" class="home-hero-image" src="{{coverImage}}" mode="aspectFill" />
+    <view class="home-hero-shade" />
+    <view class="home-hero-content">
+      <image wx:if="{{brand.logoUrl}}" class="brand-logo" src="{{brand.logoUrl}}" mode="aspectFit" />
+      <view class="brand-kicker">VISUAL NARRATIVES</view>
+      <view class="brand-name">{{brand.brandName || photographer.brandName || 'PhotoNest'}}</view>
+      <view class="brand-subtitle">{{brand.photographerName || photographer.photographerName || '用影像记录重要时刻'}}</view>
+      <view class="hero-actions">
+        <view class="hero-primary" bindtap="goBooking">BOOK NOW</view>
+        <view class="hero-ghost" bindtap="copyWechat">WECHAT</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="home-intro">
+    <view class="intro-eyebrow">ABOUT THE STUDIO</view>
+    <view class="intro-title">关于摄影师</view>
+    <view class="intro-copy">{{brand.intro || '专注婚礼、领证、写真与亲子影像，用照片记录真实的重要时刻。'}}</view>
+  </view>
+
+  <view class="home-block">
+    <view class="block-head works-head">
+      <view class="works-title-wrap">
+        <view class="block-eyebrow">SELECTED PORTFOLIO</view>
+        <view class="block-title">作品展示</view>
+      </view>
+    </view>
+    <view class="home-work-grid">
+      <view wx:for="{{homeWorks}}" wx:key="id" class="home-work-card {{index == 0 ? 'featured' : ''}}" data-id="{{item.id}}" bindtap="goWork">
+        <image class="home-work-cover" src="{{item.coverUrl}}" mode="aspectFill" />
+        <view class="home-work-meta">
+          <view class="home-work-label">{{item.shootType || 'Photo Story'}}</view>
+          <view class="home-work-title">{{item.title}}</view>
+          <view class="home-work-tag">{{item.tags || item.shootType || '作品欣赏'}}</view>
+        </view>
+      </view>
+      <view wx:if="{{needsPlaceholder}}" class="home-work-placeholder" />
+    </view>
+    <view wx:if="{{homeWorks.length >= 8}}" class="home-more-button" bindtap="goWorks">MORE</view>
+    <view wx:if="{{homeWorks.length === 0}}" class="home-empty">摄影师正在整理作品</view>
+  </view>
+
+  <contact-dock share-code="{{shareCode}}" />
+  <floating-booking />
+</view>

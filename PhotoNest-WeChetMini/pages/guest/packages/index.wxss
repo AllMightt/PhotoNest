@@ -1,0 +1,23 @@
+.package-card {
+  padding-top: 42rpx;
+}
+
+.package-label {
+  margin-top: 22rpx;
+  color: #9b7a19;
+  font-size: 20rpx;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.package-price {
+  margin-top: 12rpx;
+  color: #4f5050;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+.package-booking {
+  margin-top: 28rpx;
+}

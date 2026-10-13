@@ -1,0 +1,13 @@
+.DS_Store
+.superpowers/
+.cursor/
+node_modules/
+dist/
+unpackage/
+
+# Exclude demo private keys and default-login files from the public repository.
+RuoYi-Cloud-Vue3/src/utils/jsencrypt.js
+RuoYi-Cloud/ruoyi-ui/src/utils/jsencrypt.js
+RuoYi-App/pages/login.vue
+RuoYi-Cloud-Vue3/src/views/login.vue
+RuoYi-Cloud/ruoyi-ui/src/views/login.vue

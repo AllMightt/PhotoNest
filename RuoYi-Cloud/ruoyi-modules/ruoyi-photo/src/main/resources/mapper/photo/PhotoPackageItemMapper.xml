@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.photo.mapper.PhotoPackageItemMapper">
+
+    <resultMap type="com.ruoyi.photo.domain.PhotoPackageItem" id="PhotoPackageItemResult">
+        <id property="id" column="id" />
+        <result property="photographerId" column="photographer_id" />
+        <result property="packageId" column="package_id" />
+        <result property="itemName" column="item_name" />
+        <result property="itemValue" column="item_value" />
+        <result property="sort" column="sort" />
+        <result property="delFlag" column="del_flag" />
+        <result property="createBy" column="create_by" />
+        <result property="createTime" column="create_time" />
+        <result property="updateBy" column="update_by" />
+        <result property="updateTime" column="update_time" />
+        <result property="remark" column="remark" />
+    </resultMap>
+
+    <sql id="selectPhotoPackageItemVo">
+        select id, photographer_id, package_id, item_name, item_value, sort, del_flag, create_by, create_time, update_by, update_time, remark from photo_package_item
+    </sql>
+
+    <select id="selectPhotoPackageItemList" parameterType="com.ruoyi.photo.domain.PhotoPackageItem" resultMap="PhotoPackageItemResult">
+        <include refid="selectPhotoPackageItemVo"/>
+        <where>
+            <if test="delFlag == null or delFlag == ''"> and del_flag = '0'</if>
+            <if test="id != null"> and id = #{id}</if>
+            <if test="photographerId != null"> and photographer_id = #{photographerId}</if>
+            <if test="packageId != null"> and package_id = #{packageId}</if>
+            <if test="itemName != null and itemName != ''"> and item_name = #{itemName}</if>
+            <if test="itemValue != null and itemValue != ''"> and item_value = #{itemValue}</if>
+            <if test="sort != null"> and sort = #{sort}</if>
+            <if test="delFlag != null and delFlag != ''"> and del_flag = #{delFlag}</if>
+        </where>
+    </select>
+
+    <select id="selectPhotoPackageItemById" parameterType="Long" resultMap="PhotoPackageItemResult">
+        <include refid="selectPhotoPackageItemVo"/>
+        where id = #{id} and del_flag = '0'
+    </select>
+
+    <select id="selectPhotoPackageItemByIdAndPhotographerId" resultMap="PhotoPackageItemResult">
+        <include refid="selectPhotoPackageItemVo"/>
+        where id = #{id} and photographer_id = #{photographerId} and del_flag = '0'
+    </select>
+
+    <insert id="insertPhotoPackageItem" parameterType="com.ruoyi.photo.domain.PhotoPackageItem" useGeneratedKeys="true" keyProperty="id">
+        insert into photo_package_item
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="photographerId != null">photographer_id,</if>
+            <if test="packageId != null">package_id,</if>
+            <if test="itemName != null">item_name,</if>
+            <if test="itemValue != null">item_value,</if>
+            <if test="sort != null">sort,</if>
+            <if test="delFlag != null">del_flag,</if>
+            <if test="createBy != null">create_by,</if>
+            create_time,
+            <if test="remark != null">remark,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="photographerId != null">#{photographerId},</if>
+            <if test="packageId != null">#{packageId},</if>
+            <if test="itemName != null">#{itemName},</if>
+            <if test="itemValue != null">#{itemValue},</if>
+            <if test="sort != null">#{sort},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+            <if test="createBy != null">#{createBy},</if>
+            sysdate(),
+            <if test="remark != null">#{remark},</if>
+        </trim>
+    </insert>
+
+    <update id="updatePhotoPackageItem" parameterType="com.ruoyi.photo.domain.PhotoPackageItem">
+        update photo_package_item
+        <set>
+            <if test="photographerId != null">photographer_id = #{photographerId},</if>
+            <if test="packageId != null">package_id = #{packageId},</if>
+            <if test="itemName != null">item_name = #{itemName},</if>
+            <if test="itemValue != null">item_value = #{itemValue},</if>
+            <if test="sort != null">sort = #{sort},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            update_time = sysdate()
+        </set>
+        where id = #{id}
+    </update>
+
+    <update id="deletePhotoPackageItemById" parameterType="Long">
+        update photo_package_item set del_flag = '2', update_time = sysdate() where id = #{id}
+    </update>
+
+    <update id="deletePhotoPackageItemByIds" parameterType="Long">
+        update photo_package_item set del_flag = '2', update_time = sysdate() where id in
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+
+    <update id="deletePhotoPackageItemByIdAndPhotographerId">
+        update photo_package_item set del_flag = '2', update_time = sysdate()
+        where id = #{id} and photographer_id = #{photographerId}
+    </update>
+
+</mapper>

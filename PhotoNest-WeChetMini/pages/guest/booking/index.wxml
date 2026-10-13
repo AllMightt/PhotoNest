@@ -1,0 +1,40 @@
+<view class="page">
+  <view wx:if="{{submitted}}" class="section success-panel">
+    <view class="eyebrow">BOOKING SENT</view>
+    <view class="title">提交成功</view>
+    <view class="muted">预约咨询已提交，摄影师会尽快与你确认。</view>
+    <view class="primary-button success-confirm" bindtap="confirmSuccess">确认</view>
+  </view>
+
+  <view wx:else>
+    <view class="eyebrow">BOOKING REQUEST</view>
+    <view class="title">预约咨询</view>
+    <view class="section">
+      <picker range="{{shootTypes}}" value="{{shootTypeIndex}}" bindchange="changeShootType">
+        <view class="input picker-input">{{form.shootType || '预约类型 *'}}</view>
+      </picker>
+      <picker mode="date" value="{{form.expectedDate}}" start="{{today}}" bindchange="changeExpectedDate">
+        <view class="input picker-input">{{form.expectedDate || '拍摄日期 *'}}</view>
+      </picker>
+      <picker mode="time" value="{{selectedTime}}" bindchange="changeExpectedTime">
+        <view class="input picker-input">{{form.expectedTime || '预约时间段 *'}}</view>
+      </picker>
+      <view class="form-item">
+        <input value="{{form.phone}}" class="input" placeholder="手机号 *" type="number" data-field="phone" bindinput="changeInput" />
+      </view>
+      <view class="form-item">
+        <input value="{{form.expectedLocation}}" class="input" placeholder="拍摄地点 *" data-field="expectedLocation" bindinput="changeInput" />
+      </view>
+      <view class="form-item">
+        <input value="{{form.wechatId}}" class="input" placeholder="微信号（选填，可修改）" data-field="wechatId" bindinput="changeInput" />
+      </view>
+      <view class="form-item">
+        <input value="{{form.customerName}}" class="input" placeholder="昵称/姓名 *" data-field="customerName" bindinput="changeInput" />
+      </view>
+      <view class="form-item">
+        <textarea value="{{form.remark}}" class="textarea" placeholder="备注（选填）" data-field="remark" bindinput="changeInput" />
+      </view>
+      <view class="primary-button booking-submit" bindtap="submit">提交预约</view>
+    </view>
+  </view>
+</view>

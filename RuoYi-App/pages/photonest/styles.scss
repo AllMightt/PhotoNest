@@ -1,0 +1,145 @@
+.pn-page {
+  min-height: 100vh;
+  padding: 28rpx;
+  box-sizing: border-box;
+  background: #f7f7f5;
+  color: #242424;
+}
+
+.pn-section {
+  margin: 28rpx 0;
+  padding: 28rpx;
+  background: #fff;
+  border-radius: 12rpx;
+}
+
+.pn-eyebrow {
+  color: #8b8b8b;
+  font-size: 24rpx;
+}
+
+.pn-title {
+  margin-top: 8rpx;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.pn-muted {
+  color: #777;
+  font-size: 26rpx;
+  line-height: 1.7;
+}
+
+.pn-hero-image {
+  width: 100%;
+  height: 620rpx;
+  object-fit: cover;
+  background: #eee;
+}
+
+.pn-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22rpx;
+}
+
+.pn-cover {
+  width: 100%;
+  height: 230rpx;
+  object-fit: cover;
+  background: #eee;
+}
+
+.pn-card-title {
+  margin-top: 14rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pn-placeholder {
+  min-height: 230rpx;
+  border: 1px dashed #d6d6d6;
+}
+
+.pn-primary,
+.pn-ghost,
+.pn-more {
+  height: 88rpx;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+}
+
+.pn-primary {
+  background: #63c9c7;
+  color: #fff;
+}
+
+.pn-ghost,
+.pn-more {
+  background: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.pn-floating {
+  position: fixed;
+  right: 28rpx;
+  bottom: 130rpx;
+  z-index: 20;
+  width: 116rpx;
+  height: 116rpx;
+  border-radius: 999rpx;
+  background: #63c9c7;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12rpx 34rpx rgba(0, 0, 0, 0.18);
+}
+
+.pn-tabs {
+  display: flex;
+  gap: 16rpx;
+  overflow-x: auto;
+  padding: 12rpx 0 20rpx;
+  white-space: nowrap;
+}
+
+.pn-tab {
+  flex: 0 0 auto;
+  padding: 14rpx 24rpx;
+  border-radius: 999rpx;
+  background: #fff;
+  color: #686868;
+}
+
+.pn-tab-active {
+  background: #242424;
+  color: #fff;
+}
+
+.pn-form-item {
+  margin-bottom: 22rpx;
+}
+
+.pn-input,
+.pn-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 82rpx;
+  padding: 0 22rpx;
+  border: 1px solid #ddd;
+  border-radius: 8rpx;
+  background: #fff;
+}
+
+.pn-textarea {
+  min-height: 160rpx;
+  padding-top: 18rpx;
+}

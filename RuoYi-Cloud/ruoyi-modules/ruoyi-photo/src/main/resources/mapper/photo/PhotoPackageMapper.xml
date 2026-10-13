@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.photo.mapper.PhotoPackageMapper">
+
+    <resultMap type="com.ruoyi.photo.domain.PhotoPackage" id="PhotoPackageResult">
+        <id property="id" column="id" />
+        <result property="photographerId" column="photographer_id" />
+        <result property="packageName" column="package_name" />
+        <result property="coverUrl" column="cover_url" />
+        <result property="priceDisplayType" column="price_display_type" />
+        <result property="priceText" column="price_text" />
+        <result property="price" column="price" />
+        <result property="depositAmount" column="deposit_amount" />
+        <result property="durationMinutes" column="duration_minutes" />
+        <result property="originalPhotoCount" column="original_photo_count" />
+        <result property="retouchPhotoCount" column="retouch_photo_count" />
+        <result property="suitablePeople" column="suitable_people" />
+        <result property="serviceContent" column="service_content" />
+        <result property="deliveryCycle" column="delivery_cycle" />
+        <result property="extraPhotoPrice" column="extra_photo_price" />
+        <result property="extraHourPrice" column="extra_hour_price" />
+        <result property="notice" column="notice" />
+        <result property="rescheduleRule" column="reschedule_rule" />
+        <result property="sort" column="sort" />
+        <result property="status" column="status" />
+        <result property="delFlag" column="del_flag" />
+        <result property="createBy" column="create_by" />
+        <result property="createTime" column="create_time" />
+        <result property="updateBy" column="update_by" />
+        <result property="updateTime" column="update_time" />
+        <result property="remark" column="remark" />
+    </resultMap>
+
+    <sql id="selectPhotoPackageVo">
+        select id, photographer_id, package_name, cover_url, price_display_type, price_text, price, deposit_amount, duration_minutes, original_photo_count, retouch_photo_count, suitable_people, service_content, delivery_cycle, extra_photo_price, extra_hour_price, notice, reschedule_rule, sort, status, del_flag, create_by, create_time, update_by, update_time, remark from photo_package
+    </sql>
+
+    <select id="selectPhotoPackageList" parameterType="com.ruoyi.photo.domain.PhotoPackage" resultMap="PhotoPackageResult">
+        <include refid="selectPhotoPackageVo"/>
+        <where>
+            <if test="delFlag == null or delFlag == ''"> and del_flag = '0'</if>
+            <if test="id != null"> and id = #{id}</if>
+            <if test="photographerId != null"> and photographer_id = #{photographerId}</if>
+            <if test="packageName != null and packageName != ''"> and package_name = #{packageName}</if>
+            <if test="coverUrl != null and coverUrl != ''"> and cover_url = #{coverUrl}</if>
+            <if test="priceDisplayType != null and priceDisplayType != ''"> and price_display_type = #{priceDisplayType}</if>
+            <if test="priceText != null and priceText != ''"> and price_text = #{priceText}</if>
+            <if test="price != null"> and price = #{price}</if>
+            <if test="depositAmount != null"> and deposit_amount = #{depositAmount}</if>
+            <if test="durationMinutes != null"> and duration_minutes = #{durationMinutes}</if>
+            <if test="originalPhotoCount != null"> and original_photo_count = #{originalPhotoCount}</if>
+            <if test="retouchPhotoCount != null"> and retouch_photo_count = #{retouchPhotoCount}</if>
+            <if test="suitablePeople != null and suitablePeople != ''"> and suitable_people = #{suitablePeople}</if>
+            <if test="serviceContent != null and serviceContent != ''"> and service_content = #{serviceContent}</if>
+            <if test="deliveryCycle != null and deliveryCycle != ''"> and delivery_cycle = #{deliveryCycle}</if>
+            <if test="extraPhotoPrice != null"> and extra_photo_price = #{extraPhotoPrice}</if>
+            <if test="extraHourPrice != null"> and extra_hour_price = #{extraHourPrice}</if>
+            <if test="notice != null and notice != ''"> and notice = #{notice}</if>
+            <if test="rescheduleRule != null and rescheduleRule != ''"> and reschedule_rule = #{rescheduleRule}</if>
+            <if test="sort != null"> and sort = #{sort}</if>
+            <if test="status != null and status != ''"> and status = #{status}</if>
+            <if test="delFlag != null and delFlag != ''"> and del_flag = #{delFlag}</if>
+        </where>
+    </select>
+
+    <select id="selectPhotoPackageById" parameterType="Long" resultMap="PhotoPackageResult">
+        <include refid="selectPhotoPackageVo"/>
+        where id = #{id} and del_flag = '0'
+    </select>
+
+    <select id="selectAppPhotoPackageList" parameterType="com.ruoyi.photo.domain.PhotoPackage" resultMap="PhotoPackageResult">
+        <include refid="selectPhotoPackageVo"/>
+        where photographer_id = #{photographerId}
+          and status = '0'
+          and del_flag = '0'
+        order by sort asc, id desc
+    </select>
+
+    <select id="selectPhotoPackageByIdAndPhotographerId" resultMap="PhotoPackageResult">
+        <include refid="selectPhotoPackageVo"/>
+        where id = #{id} and photographer_id = #{photographerId} and del_flag = '0'
+    </select>
+
+    <insert id="insertPhotoPackage" parameterType="com.ruoyi.photo.domain.PhotoPackage" useGeneratedKeys="true" keyProperty="id">
+        insert into photo_package
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="photographerId != null">photographer_id,</if>
+            <if test="packageName != null">package_name,</if>
+            <if test="coverUrl != null">cover_url,</if>
+            <if test="priceDisplayType != null">price_display_type,</if>
+            <if test="priceText != null">price_text,</if>
+            <if test="price != null">price,</if>
+            <if test="depositAmount != null">deposit_amount,</if>
+            <if test="durationMinutes != null">duration_minutes,</if>
+            <if test="originalPhotoCount != null">original_photo_count,</if>
+            <if test="retouchPhotoCount != null">retouch_photo_count,</if>
+            <if test="suitablePeople != null">suitable_people,</if>
+            <if test="serviceContent != null">service_content,</if>
+            <if test="deliveryCycle != null">delivery_cycle,</if>
+            <if test="extraPhotoPrice != null">extra_photo_price,</if>
+            <if test="extraHourPrice != null">extra_hour_price,</if>
+            <if test="notice != null">notice,</if>
+            <if test="rescheduleRule != null">reschedule_rule,</if>
+            <if test="sort != null">sort,</if>
+            <if test="status != null">status,</if>
+            <if test="delFlag != null">del_flag,</if>
+            <if test="createBy != null">create_by,</if>
+            create_time,
+            <if test="remark != null">remark,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="photographerId != null">#{photographerId},</if>
+            <if test="packageName != null">#{packageName},</if>
+            <if test="coverUrl != null">#{coverUrl},</if>
+            <if test="priceDisplayType != null">#{priceDisplayType},</if>
+            <if test="priceText != null">#{priceText},</if>
+            <if test="price != null">#{price},</if>
+            <if test="depositAmount != null">#{depositAmount},</if>
+            <if test="durationMinutes != null">#{durationMinutes},</if>
+            <if test="originalPhotoCount != null">#{originalPhotoCount},</if>
+            <if test="retouchPhotoCount != null">#{retouchPhotoCount},</if>
+            <if test="suitablePeople != null">#{suitablePeople},</if>
+            <if test="serviceContent != null">#{serviceContent},</if>
+            <if test="deliveryCycle != null">#{deliveryCycle},</if>
+            <if test="extraPhotoPrice != null">#{extraPhotoPrice},</if>
+            <if test="extraHourPrice != null">#{extraHourPrice},</if>
+            <if test="notice != null">#{notice},</if>
+            <if test="rescheduleRule != null">#{rescheduleRule},</if>
+            <if test="sort != null">#{sort},</if>
+            <if test="status != null">#{status},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+            <if test="createBy != null">#{createBy},</if>
+            sysdate(),
+            <if test="remark != null">#{remark},</if>
+        </trim>
+    </insert>
+
+    <update id="updatePhotoPackage" parameterType="com.ruoyi.photo.domain.PhotoPackage">
+        update photo_package
+        <set>
+            <if test="photographerId != null">photographer_id = #{photographerId},</if>
+            <if test="packageName != null">package_name = #{packageName},</if>
+            <if test="coverUrl != null">cover_url = #{coverUrl},</if>
+            <if test="priceDisplayType != null">price_display_type = #{priceDisplayType},</if>
+            <if test="priceText != null">price_text = #{priceText},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="depositAmount != null">deposit_amount = #{depositAmount},</if>
+            <if test="durationMinutes != null">duration_minutes = #{durationMinutes},</if>
+            <if test="originalPhotoCount != null">original_photo_count = #{originalPhotoCount},</if>
+            <if test="retouchPhotoCount != null">retouch_photo_count = #{retouchPhotoCount},</if>
+            <if test="suitablePeople != null">suitable_people = #{suitablePeople},</if>
+            <if test="serviceContent != null">service_content = #{serviceContent},</if>
+            <if test="deliveryCycle != null">delivery_cycle = #{deliveryCycle},</if>
+            <if test="extraPhotoPrice != null">extra_photo_price = #{extraPhotoPrice},</if>
+            <if test="extraHourPrice != null">extra_hour_price = #{extraHourPrice},</if>
+            <if test="notice != null">notice = #{notice},</if>
+            <if test="rescheduleRule != null">reschedule_rule = #{rescheduleRule},</if>
+            <if test="sort != null">sort = #{sort},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            update_time = sysdate()
+        </set>
+        where id = #{id}
+    </update>
+
+    <update id="deletePhotoPackageById" parameterType="Long">
+        update photo_package set del_flag = '2', update_time = sysdate() where id = #{id}
+    </update>
+
+    <update id="deletePhotoPackageByIds" parameterType="Long">
+        update photo_package set del_flag = '2', update_time = sysdate() where id in
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+
+    <update id="deletePhotoPackageByIdAndPhotographerId">
+        update photo_package set del_flag = '2', update_time = sysdate()
+        where id = #{id} and photographer_id = #{photographerId}
+    </update>
+
+</mapper>
